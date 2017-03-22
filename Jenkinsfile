@@ -13,7 +13,7 @@ node {
          sh "'${mvnHome}/bin/mvn' clean package"
    }
 
-   stage('Build and Push Image') {
+   stage('Build Docker Image') {
          sh "'${mvnHome}/bin/mvn' docker:build -DpushImage"
    }
 
