@@ -17,6 +17,14 @@ node {
          sh "'${mvnHome}/bin/mvn' docker:build -DpushImage"
    }
 
+    stage('what files') {
+        sh '''
+            pwd
+            ls -la
+            cat k8s-deployment.yml
+        '''
+    }
+
    stage('Deploy to Kubernetes') {
       sh "kubectl apply -f k8s-deployment.yml"
    }
