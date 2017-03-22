@@ -10,13 +10,15 @@ node {
    }
 
    stage('Package') {
-      // Run the maven build
          sh "'${mvnHome}/bin/mvn' clean package"
    }
 
    stage('Build and Push Image') {
-      // Run the maven build
          sh "'${mvnHome}/bin/mvn' docker:build -DpushImage"
+   }
+
+   stage('Deploy to Kubernetes') {
+      sh "kubectl apply -f k8s-deployment.yml"
    }
 
 }
