@@ -16,7 +16,7 @@ node {
    }
 
    stage('Deploy to Kubernetes') {
-       // delete pod to get the image to repull, since dev version does not change (to eliminate this, tag the snapshots with a build number)
+       // delete pod to get the image to repull (tag dev version to eliminate this)
       sh '''
             kubectl apply -f k8s-deployment.yml
             kubectl delete po -l app=test
