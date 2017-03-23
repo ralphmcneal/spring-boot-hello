@@ -4,8 +4,6 @@ node {
       // Get some code from a GitHub repository
       git 'https://github.com/ralphmcneal/spring-boot-hello.git'
       // Get the Maven tool.
-      // ** NOTE: This 'M3' Maven tool must be configured
-      // **       in the global configuration.
       mvnHome = tool 'M3'
    }
 
@@ -18,6 +16,7 @@ node {
    }
 
    stage('Deploy to Kubernetes') {
+       // delete pod to get the image to repull, since dev version does not change
       sh '''
             kubectl apply -f k8s-deployment.yml
             kubectl delete po -l app=test
