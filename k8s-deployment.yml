@@ -21,7 +21,7 @@ spec:
         app: test
     spec:
       containers:
-      - image: nexus.pl.ctl.io:16002/io.clc/spring-boot-hello
+      - image: nexus.pl.ctl.io:16002/io.clc/spring-boot-hello:latest
         imagePullPolicy: Always
         name: hello-boot
         ports:
