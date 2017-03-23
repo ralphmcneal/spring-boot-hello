@@ -19,8 +19,8 @@ node {
 
    stage('Deploy to Kubernetes') {
       sh '''
-            kubectl delete po -l app=test
             kubectl apply -f k8s-deployment.yml
+            kubectl delete po -l app=test
         '''
    }
 
