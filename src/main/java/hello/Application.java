@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Application {
 
-	@RequestMapping("/")
-	public String home() {
-				        return "Hello from Spring Boot!";
-					    }
+    @RequestMapping("/")
+    public String home() {
+        return "Hello World from Spring Boot!";
+    }
 
     @RequestMapping("/chaos")
     public void chaos() {
@@ -21,7 +21,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-			        SpringApplication.run(Application.class, args);
-				    }
+        SpringApplication.run(Application.class, args);
+    }
 
 }

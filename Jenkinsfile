@@ -1,6 +1,6 @@
 node {
     def mvnHome
-    stage('Preparation') { // for display purposes
+    stage('Preparation') {
         // Get some code from a GitHub repository
         git 'https://github.com/ralphmcneal/spring-boot-hello.git'
         // Get the Maven tool.
