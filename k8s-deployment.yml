@@ -29,6 +29,12 @@ spec:
           protocol: TCP
         resources: {}
         terminationMessagePath: /dev/termination-log
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 3
       restartPolicy: Always
       securityContext: {}
       terminationGracePeriodSeconds: 30

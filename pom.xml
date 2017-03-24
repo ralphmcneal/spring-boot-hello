@@ -16,6 +16,7 @@
     <properties>
 	    <java.version>1.8</java.version>
 	    <docker.image.prefix>nexus.pl.ctl.io:16002/io.clc</docker.image.prefix>
+        <build.tag>local</build.tag>
     </properties>
 
     <dependencies>
@@ -45,6 +46,12 @@
         <targetPath>/</targetPath> <directory>${project.build.directory}</directory>
          <include>${project.build.finalName}.jar</include> </resource> 
         </resources>
+        <forceTags>true</forceTags>
+        <imageTags>
+            <imageTag>${project.version}</imageTag>
+            <imageTag>${build.tag}</imageTag>
+            <imageTag>latest</imageTag>
+        </imageTags>
         <serverId>docker-hub</serverId>
         <registryUrl>https://nexus.pl.ctl.io:16002</registryUrl>
         <retryPushCount>1</retryPushCount>

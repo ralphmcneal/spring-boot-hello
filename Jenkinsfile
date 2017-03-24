@@ -1,26 +1,22 @@
 node {
-   def mvnHome
-   stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
-      git 'https://github.com/ralphmcneal/spring-boot-hello.git'
-      // Get the Maven tool.
-      mvnHome = tool 'M3'
-   }
+    def mvnHome
+    stage('Preparation') { // for display purposes
+        // Get some code from a GitHub repository
+        git 'https://github.com/ralphmcneal/spring-boot-hello.git'
+        // Get the Maven tool.
+        mvnHome = tool 'M3'
+    }
 
-   stage('Package') {
-         sh "'${mvnHome}/bin/mvn' clean package"
-   }
+    stage('Package') {
+        sh "'${mvnHome}/bin/mvn' clean package"
+    }
 
-   stage('Build Docker Image') {
-         sh "'${mvnHome}/bin/mvn' docker:build -DpushImage"
-   }
+    stage('Build Docker Image') {
+        sh "'${mvnHome}/bin/mvn' -Dbuild.tag=${env.BUILD_TAG} docker:build -DpushImage"
+    }
 
-   stage('Deploy to Kubernetes') {
-       // delete pod to get the image to repull (tag dev version to eliminate this)
-      sh '''
-            kubectl apply -f k8s-deployment.yml
-            kubectl delete po -l app=test
-        '''
-   }
-
+    stage('Deploy to Kubernetes') {
+        sh "sed -i.bak 's#:latest#:${env.BUILD_TAG}#' k8s-deployment.yml"
+        sh "kubectl apply -f k8s-deployment.yml"
+    }
 }
