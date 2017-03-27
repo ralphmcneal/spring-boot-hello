@@ -14,9 +14,8 @@ public class Application {
         return "Hello World from Spring Boot!";
     }
 
-    @RequestMapping("/chaos")
-    public void chaos() {
-        //shutdown the VM
+    @RequestMapping("/oops")
+    public void fail() {
         System.exit(1);
     }
 
