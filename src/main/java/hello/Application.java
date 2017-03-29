@@ -2,8 +2,13 @@ package hello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @RestController
@@ -17,6 +22,13 @@ public class Application {
     @RequestMapping("/oops")
     public void fail() {
         System.exit(1);
+    }
+
+    @RequestMapping("/node")
+    public String helloNode() {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate.exchange("http://hello-node:8080", HttpMethod.GET, new HttpEntity(""), String.class);
+        return "Calling node from Spring Boot: " + responseEntity.getBody();
     }
 
     public static void main(String[] args) {
