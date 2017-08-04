@@ -15,7 +15,7 @@
 
     <properties>
 	    <java.version>1.8</java.version>
-	    <docker.image.prefix>nexus.pl.ctl.io:16002/io.clc</docker.image.prefix>
+	    <docker.image.prefix>nexus.pl.ctl.io:18002/io.clc</docker.image.prefix>
         <build.tag>local</build.tag>
     </properties>
 
