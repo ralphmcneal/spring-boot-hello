@@ -2,14 +2,14 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: test
+    app: demo
   name: hello-boot
-  namespace: default
+  namespace: example
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test
+      app: demo
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -18,10 +18,10 @@ spec:
   template:
     metadata:
       labels:
-        app: test
+        app: demo
     spec:
       containers:
-      - image: nexus.pl.ctl.io:16002/io.clc/spring-boot-hello:latest
+      - image: nexus.pl.ctl.io:16000/io.clc/spring-boot-hello:latest
         imagePullPolicy: Always
         name: hello-boot
         ports:
@@ -43,17 +43,18 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: test
+    app: demo
   name: hello-boot
-  namespace: default
+  namespace: example
 spec:
   ports:
-  - nodePort: 30253
+  - nodePort: 30254
+    name: web
     port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    app: test
+    app: demo
   sessionAffinity: None
   type: NodePort
 status:

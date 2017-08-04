@@ -33,6 +33,36 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- The client -->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient</artifactId>
+            <version>0.0.21</version>
+        </dependency>
+        <!-- Hotspot JVM metrics-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_hotspot</artifactId>
+            <version>0.0.21</version>
+        </dependency>
+        <!-- Exposition servlet-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_servlet</artifactId>
+            <version>0.0.21</version>
+        </dependency>
+        <!-- Pushgateway exposition-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_pushgateway</artifactId>
+            <version>0.0.21</version>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_spring_boot</artifactId>
+            <version>0.0.21</version>
+        </dependency>
     </dependencies>
 
 
@@ -53,7 +83,7 @@
             <imageTag>latest</imageTag>
         </imageTags>
         <serverId>docker-hub</serverId>
-        <registryUrl>https://nexus.pl.ctl.io:16002</registryUrl>
+        <registryUrl>https://nexus.pl.ctl.io:18002</registryUrl>
         <retryPushCount>1</retryPushCount>
     </configuration> 
     </plugin>
