@@ -53,7 +53,7 @@ metadata:
   namespace: rm-test
 spec:
   ports:
-  - nodePort: 30255
+  - nodePort: 30264
     name: web
     port: 8080
     protocol: TCP
