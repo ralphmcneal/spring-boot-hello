@@ -48,7 +48,7 @@ metadata:
   namespace: example
 spec:
   ports:
-  - nodePort: 30254
+  - nodePort: 30255
     name: web
     port: 8080
     protocol: TCP
