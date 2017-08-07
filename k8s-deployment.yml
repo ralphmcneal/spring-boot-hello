@@ -4,7 +4,7 @@ metadata:
   labels:
     app: demo
   name: hello-boot
-  namespace: example
+  namespace: rm-test
 spec:
   replicas: 1
   selector:
@@ -43,12 +43,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: demo
+    app: rm-test
   name: hello-boot
   namespace: example
 spec:
   ports:
-  - nodePort: 30254
+  - nodePort: 30255
     name: web
     port: 8080
     protocol: TCP
