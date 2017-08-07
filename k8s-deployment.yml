@@ -1,3 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rm-test
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -45,7 +50,7 @@ metadata:
   labels:
     app: rm-test
   name: hello-boot
-  namespace: example
+  namespace: rm-test
 spec:
   ports:
   - nodePort: 30255
