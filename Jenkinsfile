@@ -12,7 +12,7 @@ pipeline {
                 script {
 //                    properties = readProperties file: 'Jenkinsfile.properties'
 //                    echo "Immediate one ${properties.project_name}"
-//                }
+                }
             }
         }
         stage('Package') {
