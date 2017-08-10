@@ -1,4 +1,4 @@
-properties;
+properties = null;
 pipeline {
     agent any
     tools {
