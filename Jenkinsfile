@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
+                sh "echo deploy here"
                 script {
 //                    properties = readProperties file: 'Jenkinsfile.properties'
 //                    echo "Immediate one ${properties.project_name}"
@@ -17,12 +18,14 @@ pipeline {
         }
         stage('Package') {
             steps {
+                sh "echo deploy here"
                 //sh "mvn clean package"
             }
         }
 
         stage('Build Docker Image') {
             steps {
+                sh "echo deploy here"
                 //sh "mvn -Dbuild.tag=${env.BUILD_TAG} docker:build -DpushImage"
             }
         }
