@@ -12,7 +12,6 @@ pipeline {
             steps {
                 sh "echo deploy here"
                 script {
-                    def env = System.getenv()
                     properties = readProperties file: 'Jenkinsfile.properties'
                     properties.each{ k, v -> println "${k}:${v}" }
                     echo "Immediate one ${properties.project_name}"
