@@ -1,5 +1,3 @@
-def properties;
-
 pipeline {
     agent any
 
@@ -10,18 +8,14 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
-                sh "echo deploy here"
                 script {
                     properties = readProperties file: 'Jenkinsfile.properties'
                     properties.each{ k, v -> env."${k}"="${v}" }
-                    echo "Immediate one ${properties.project_name}"
-                    env."WTF2" = "yes"
                 }
             }
         }
         stage('Package') {
             steps {
-                sh "echo props=${properties}"
                 sh "printenv | sort"
                 sh "build/build.sh"
                 //sh "mvn clean package"

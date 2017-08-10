@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo $properties
+echo "the version is ${MAJOR_VER}.${MINOR_VER}.${MICRO_VER} for project ${project_name}."
