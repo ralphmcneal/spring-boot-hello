@@ -5,6 +5,10 @@ pipeline {
         maven 'maven'
     }
 
+    environment {
+        DOCKER_IMAGE_NAME = "${env.project_name}-img"
+    }
+
     stages {
         stage('Prepare') {
             steps {
