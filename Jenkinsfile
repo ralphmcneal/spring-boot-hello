@@ -1,6 +1,7 @@
-properties = null;
+//properties = null;
 pipeline {
     agent any
+
     tools {
         maven 'maven'
     }
@@ -9,9 +10,9 @@ pipeline {
         stage('Prepare') {
             steps {
                 script {
-                    properties = readProperties file: 'Jenkinsfile.properties'
-                    echo "Immediate one ${properties.project_name}"
-                }
+//                    properties = readProperties file: 'Jenkinsfile.properties'
+//                    echo "Immediate one ${properties.project_name}"
+//                }
             }
         }
         stage('Package') {
