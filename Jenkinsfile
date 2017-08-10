@@ -1,8 +1,16 @@
+properties;
 pipeline {
     agent any
     tools {
         maven 'maven'
     }
+    stage('Prepare') {
+        script {
+            properties = readProperties file: 'Jenkinsfile.properties'
+            echo "Immediate one ${properties.project_name}"
+        }
+    }
+
     stages {
         stage('Package') {
             steps {
