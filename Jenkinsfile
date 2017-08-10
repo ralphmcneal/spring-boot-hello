@@ -13,8 +13,9 @@ pipeline {
                 sh "echo deploy here"
                 script {
                     properties = readProperties file: 'Jenkinsfile.properties'
-                    properties.each{ k, v -> env."${k}"=${v} }
+                    properties.each{ k, v -> env."${k}"="${v}" }
                     echo "Immediate one ${properties.project_name}"
+                    env."WTF2" = "yes"
                 }
             }
         }
