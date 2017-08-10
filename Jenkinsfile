@@ -1,4 +1,5 @@
-properties = readProperties file: 'Jenkinsfile.properties'
+properties;
+
 pipeline {
     agent any
 
@@ -11,7 +12,7 @@ pipeline {
             steps {
                 sh "echo deploy here"
                 script {
-               //     properties = readProperties file: 'Jenkinsfile.properties'
+                    properties = readProperties file: 'Jenkinsfile.properties'
                     echo "Immediate one ${properties.project_name}"
                 }
             }
