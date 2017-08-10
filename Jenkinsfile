@@ -15,13 +15,14 @@ pipeline {
                     properties = readProperties file: 'Jenkinsfile.properties'
                     properties.each{ k, v -> println "${k}:${v}" }
                     echo "Immediate one ${properties.project_name}"
+                    env.WTF="yes"
                 }
             }
         }
         stage('Package') {
             steps {
                 sh "echo props=${properties}"
-                sh "echo env=${env}"
+                sh "printenv | sort"
                 sh "build/build.sh"
                 //sh "mvn clean package"
             }
