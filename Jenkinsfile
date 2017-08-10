@@ -19,7 +19,8 @@ pipeline {
         }
         stage('Package') {
             steps {
-                sh "echo deploy here"
+                sh "echo ${properties}"
+                sh "build/build.sh"
                 //sh "mvn clean package"
             }
         }
