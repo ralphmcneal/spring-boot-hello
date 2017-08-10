@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_IMAGE_NAME = "${env.project_name}-img"
+        DOCKER_IMAGE_NAME = "-img"
     }
 
     stages {
