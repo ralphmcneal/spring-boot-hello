@@ -17,13 +17,13 @@ pipeline {
         }
         stage('Package') {
             steps {
-                sh "mvn clean package"
+                //sh "mvn clean package"
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh "mvn -Dbuild.tag=${env.BUILD_TAG} docker:build -DpushImage"
+                //sh "mvn -Dbuild.tag=${env.BUILD_TAG} docker:build -DpushImage"
             }
         }
 
