@@ -14,13 +14,13 @@ pipeline {
                 script {
                     properties = readProperties file: 'Jenkinsfile.properties'
                     properties.each{ k, v -> env[${k}]=${v} }
-                    echo "Immediate one ${env}"
                 }
             }
         }
         stage('Package') {
             steps {
-                sh "echo ${properties}"
+                sh "echo props=${properties}"
+                sh "echo env=${env}"
                 sh "build/build.sh"
                 //sh "mvn clean package"
             }
