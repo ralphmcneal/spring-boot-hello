@@ -26,8 +26,9 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh "sed -i.bak 's#:latest#:${env.BUILD_TAG}#' k8s-deployment.yml"
-                sh "kubectl apply -f k8s-deployment.yml"
+                sh "echo deploy here"
+                //sh "sed -i.bak 's#:latest#:${env.BUILD_TAG}#' k8s-deployment.yml"
+                //sh "kubectl apply -f k8s-deployment.yml"
             }
         }
     }
