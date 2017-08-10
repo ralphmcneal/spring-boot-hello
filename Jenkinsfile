@@ -7,9 +7,11 @@ pipeline {
 
     stages {
         stage('Prepare') {
-            script {
-                properties = readProperties file: 'Jenkinsfile.properties'
-                echo "Immediate one ${properties.project_name}"
+            steps {
+                script {
+                    properties = readProperties file: 'Jenkinsfile.properties'
+                    echo "Immediate one ${properties.project_name}"
+                }
             }
         }
         stage('Package') {
