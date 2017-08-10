@@ -1,4 +1,4 @@
-properties;
+def properties;
 
 pipeline {
     agent any
