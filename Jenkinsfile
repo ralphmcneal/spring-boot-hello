@@ -4,14 +4,14 @@ pipeline {
     tools {
         maven 'maven'
     }
-    stage('Prepare') {
-        script {
-            properties = readProperties file: 'Jenkinsfile.properties'
-            echo "Immediate one ${properties.project_name}"
-        }
-    }
 
     stages {
+        stage('Prepare') {
+            script {
+                properties = readProperties file: 'Jenkinsfile.properties'
+                echo "Immediate one ${properties.project_name}"
+            }
+        }
         stage('Package') {
             steps {
                 sh "mvn clean package"
