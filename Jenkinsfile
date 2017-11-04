@@ -1,3 +1,5 @@
+//need utility plugin for readProperties
+
 pipeline {
     agent any
 
@@ -12,6 +14,7 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
+                hello "Ready"
                 script {
                     properties = readProperties file: 'Jenkinsfile.properties'
                     properties.each{ k, v -> env."${k}"="${v}" }

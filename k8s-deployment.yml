@@ -1,15 +1,9 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: rm-test
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
     app: demo
   name: hello-boot
-  namespace: rm-test
 spec:
   replicas: 1
   selector:
@@ -26,7 +20,7 @@ spec:
         app: demo
     spec:
       containers:
-      - image: nexus.pl.ctl.io:16000/io.clc/spring-boot-hello:latest
+      - image: rmcneal/boot:latest
         imagePullPolicy: Always
         name: hello-boot
         ports:
@@ -48,12 +42,11 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: rm-test
+    app: demo
   name: hello-boot
-  namespace: rm-test
 spec:
   ports:
-  - nodePort: 30264
+  - nodePort: 30364
     name: web
     port: 8080
     protocol: TCP
@@ -62,5 +55,25 @@ spec:
     app: demo
   sessionAffinity: None
   type: NodePort
-status:
-  loadBalancer: {}
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ServiceMonitor
+metadata:
+  name: boot-monitor
+  namespace: default
+  labels:
+    app: demo
+    k8s-apps: demo
+spec:
+  # ServiceMonitors can monitor items in other namespaces
+  namespaceSelector:
+    matchNames:
+    - default
+  jobLabel: hello-boot-monitor
+  selector:
+    matchLabels:
+      app: demo
+  endpoints:
+  - port: web
+    interval: 10s
+    path: /prometheus
