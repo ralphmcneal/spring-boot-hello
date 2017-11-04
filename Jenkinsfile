@@ -14,11 +14,11 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
-//                hello "Ready"
                 script {
                     properties = readProperties file: 'Jenkinsfile.properties'
                     properties.each{ k, v -> env."${k}"="${v}" }
                 }
+                hello "Ready"
             }
         }
         stage('Package') {
