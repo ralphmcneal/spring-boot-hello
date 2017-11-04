@@ -1,5 +1,7 @@
 //need utility plugin for readProperties
 
+@Library('jenkins-lib') _
+
 pipeline {
     agent any
 
@@ -18,7 +20,7 @@ pipeline {
                     properties = readProperties file: 'Jenkinsfile.properties'
                     properties.each{ k, v -> env."${k}"="${v}" }
                 }
-                hello "Ready"
+                hello "Ready to test"
             }
         }
         stage('Package') {
